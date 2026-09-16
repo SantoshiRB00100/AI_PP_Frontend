@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+/* ==========================================
+   THEME TOKENS (Tailwind v4 CSS-first config)
+   ========================================== */
+@theme {
+  /* Base surfaces (dark purple backgrounds) */
+  --color-base-950: #05030d;
+  --color-base-900: #0a0714;
+  --color-base-800: #120c24;
+  --color-base-700: #1b1333;
+
+  /* Brand purple */
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #7c3aed;
+  --color-primary-700: #6d28d9;
+  --color-primary-900: #3b1774;
+
+  /* Shining sky blue / cyan accent */
+  --color-accent-300: #67e8f9;
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+  --color-accent-600: #0891b2;
+
+  /* Fonts */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Shadows / glows */
+  --shadow-glow-purple: 0 0 40px -10px rgba(139, 92, 246, 0.55);
+  --shadow-glow-cyan: 0 0 40px -10px rgba(34, 211, 238, 0.55);
+  --shadow-glow-sm: 0 0 20px -6px rgba(139, 92, 246, 0.45);
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float-slow 9s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+  --animate-gradient-x: gradient-x 6s ease infinite;
+  --animate-fade-up: fade-up 0.6s ease-out forwards;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-16px);
+    }
+  }
+
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(3deg);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.55;
+    }
+  }
+
+  @keyframes gradient-x {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-base-950);
+  color: #e9e6f5;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background-color: var(--color-primary-500);
+  color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-base-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-700);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-500);
+}
+
+/* ==========================================
+   REUSABLE UTILITY CLASSES
+   ========================================== */
+
+/* Glassmorphism card */
+.glass-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Gradient text (purple -> cyan) */
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-400),
+    var(--color-accent-400)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Full hero-style background gradient */
+.bg-brand-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-600) 0%,
+    var(--color-primary-700) 45%,
+    var(--color-accent-500) 100%
+  );
+}
+
+/* Soft radial glow used behind hero content */
+.bg-radial-glow {
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(139, 92, 246, 0.25),
+    transparent 60%
+  );
+}
