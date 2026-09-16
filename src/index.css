@@ -178,3 +178,13 @@ h4 {
     transparent 60%
   );
 }
+
+/* Warm paper tone + serif display font, used only in the Home hero */
+@theme {
+  --color-paper: #f6f1e7;
+}
+
+.font-serif-display {
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+}
